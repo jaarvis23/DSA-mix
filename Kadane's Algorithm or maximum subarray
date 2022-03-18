@@ -1,0 +1,18 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int tot_sum=-2147483648;
+        int h = 0;
+        int sum = 0;
+        int n = nums.length;
+        while(h<n)
+        {
+            sum+=nums[h];
+            if(sum>tot_sum)
+                tot_sum=sum;
+            if(sum<0)
+                sum=0;
+            h++;
+        }
+        return (tot_sum);
+    }
+}

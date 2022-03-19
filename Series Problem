@@ -1,0 +1,77 @@
+import java.util.*;
+public class Solution
+{
+public static void main(String[] args) 
+{
+    int n;
+    System.out.println("Enter the number of elements in the series");
+    Scanner s = new Scanner(System.in);
+    n = s.nextInt();
+    int[] a = new int[n];
+    System.out.println("Enter the numbers");
+    for (int i = 0;i<n ; i++)
+    {
+        System.out.println("Enter the number ["+(i+1)+"] :");
+        a[i] = s.nextInt();
+    }
+    CheckAPGPHP(a); 
+}
+public static void CheckAPGPHP(int[] a)
+{
+	int n = a.length;
+    if(n<3)
+    {
+        System.out.println("Array should contain atleast 3 elements ");
+        return;
+    }
+    if(CheckAP(a) == true)
+    {
+        System.out.println("AP");
+        int d = a[1]-a[0];
+        System.out.println(a[n-1]+2);
+    }
+
+    if(CheckGP(a) == true)
+    {
+    	System.out.println("GP");
+    	System.out.println((a[n-1]*a[n-1])/a[n-2]);
+    }
+    
+    if(CheckFibo(a) == true)
+    {
+    	System.out.println("Fibonacci Series");
+    	System.out.println(a[n-2]+a[n-1]);
+    }
+}
+
+public static boolean CheckAP(int[] a)
+{
+    int iDiff=a[1]-a[0];
+    for(int i=0;i<a.length-1;i++)
+    {
+        if((a[i+1]-a[i])!=iDiff)
+            return false;
+    }
+    return true;
+}
+
+public static boolean CheckGP(int[] a)
+{
+    for(int i=0;i<a.length-2;i++)
+    {
+        if((a[i]*a[i+2])!=(a[i+1]*a[i+1]))
+            return false;
+    }
+    return true;
+}
+public static boolean CheckFibo(int[] a)
+{
+	int n = a.length;
+	for(int i=0;i<n-2;i++)
+	{
+		if(a[i+2] != (a[i]+a[i+1]))
+			return false;
+	}
+	return true;
+}
+}

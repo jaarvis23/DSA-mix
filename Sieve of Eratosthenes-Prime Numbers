@@ -1,0 +1,26 @@
+//Find Prime numbers in a range - GFG
+class Solution {
+    ArrayList<Integer> primeRange(int M, int N) {
+        // code here
+        boolean arr[] = new boolean[N+1];
+        Arrays.fill(arr,true);
+        arr[0]=false;
+        arr[1]=true;
+        if(M==1)
+            M=2;
+        for(int i=2;i<M;i++)
+            arr[i]=false;
+        for(int i=2;i*i<=N;i++)
+        {
+            for(int j=2*i;j<=N;j+=i)
+                arr[j]=false;
+        }
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i=2;i<arr.length;i++)
+        {
+            if(arr[i]==true)
+                list.add(i);
+        }
+        return list;
+    }
+}

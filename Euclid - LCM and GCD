@@ -1,0 +1,16 @@
+//LCM And GCD - GFG
+class Solution {
+    static Long gcd(Long a,Long b)
+    {
+        if(b==0)
+            return a;
+        return gcd(b,a%b);
+    }
+    static Long[] lcmAndGcd(Long A , Long B) {
+        // code here
+        Long arr[] = new Long[2];
+        arr[1] = gcd(A,B);
+        arr[0] = (A*B)/arr[1];
+        return arr;
+    }
+};

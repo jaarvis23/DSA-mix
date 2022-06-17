@@ -1,0 +1,26 @@
+6. PowerSet of a String by Recursion
+
+class Solution
+{
+    static void func (String s , int i , String cur,List<String> ll)
+    {
+        if(i==s.length())
+        {
+            if (cur.isEmpty()) {
+                return;
+            }
+            ll.add(cur);
+            return;
+        }
+        func(s,i+1,cur+s.charAt(i),ll);
+        func(s,i+1,cur,ll);
+    }
+    public List<String> AllPossibleStrings(String s)
+    {
+        // Code here
+        List<String> ans = new ArrayList<>();
+        func(s,0,"",ans);
+        Collections.sort(ans);
+        return ans;
+    }
+}

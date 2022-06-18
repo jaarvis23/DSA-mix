@@ -1,0 +1,29 @@
+//GFG medium
+
+class Solution {
+    public List<String> find_permutation(String S) {
+    List<String> result = new ArrayList<>();
+    perm(S,result,0);
+    Collections.sort(result);
+    return result;
+   }
+   public void perm(String S, List<String> result, int idx){
+       if(idx==S.length()){
+           if(!result.contains(S)){
+           result.add(S);
+           }
+       }
+       for(int i=idx; i<S.length(); i++){
+            S=swap(S,i,idx);
+            perm(S,result, idx+1);
+            S=swap(S,i,idx);
+       }
+   }
+   public String swap(String a, int i, int j){
+        char [] ch= a.toCharArray();
+        char temp = ch[i];
+        ch[i]=ch[j];
+        ch[j]=temp;
+        return String.valueOf(ch);
+    }
+}

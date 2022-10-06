@@ -1,0 +1,53 @@
+import java.util.*;
+class Node
+{
+	int data;
+	Node left , right;
+	Node(int d)
+	{
+		this.data = d;
+		this.left = null;
+		this.right = null;
+	}
+}
+class Sum
+{
+	void HoriSum(Node root,HashMap<Integer,Integer> h , int hd)
+	{
+		if(root==null)
+			return;
+		HoriSum(root.left,h,hd-1);
+		if(!h.containsKey(hd))
+			h.put(hd,root.data);
+		else
+		{
+		int t = h.get(hd);
+		h.put(hd , t+root.data);
+		}
+		HoriSum(root.right,h,hd+1);
+		
+	}
+}
+public class Practise { 
+
+    public static void main(String[] args) 
+
+    { 
+    	Node root = new Node(1);
+    	root.left = new Node(5);
+    	root.right = new Node(8);
+    	root.right.left = new Node(17);
+    	root.right.right = new Node(24);
+    	root.right.left.right = new Node(9);
+    	root.right.left.right.left = new Node(2);
+    	HashMap<Integer,Integer> h = new HashMap<Integer,Integer>();
+    	Sum obj = new Sum();
+    	obj.HoriSum(root,h,0);
+    	for(Map.Entry<Integer,Integer> e : h.entrySet())
+    	{
+    		System.out.println(e.getValue());
+    	}
+    	
+
+    } 
+}

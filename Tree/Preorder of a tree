@@ -1,3 +1,6 @@
+// Build a tree by given array and print its root and preorder traversal
+
+
 import java.util.*;
 class Node
 {
@@ -13,26 +16,35 @@ class Node
 class Tree
 {
 	static int i = -1;
-	Node depth(int arr[])
+	Node BuildTree(int arr[])
 	{
 		i++;
         if(arr[i]==-1)
             return null;
         Node root = new Node(arr[i]);
-        root.left = depth(arr);
-        root.right = depth(arr);
+        root.left = BuildTree(arr);
+        root.right = BuildTree(arr);
 		return root;
 	}
+    void preorder(Node root)
+    {
+        if(root==null)
+            return;
+        System.out.print(root.data+" ");
+        preorder(root.left);
+        preorder(root.right);
+    }
 }
 public class Test { 
 
     public static void main(String[] args) 
 
     { 
+    	
         int arr[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
     	Tree obj = new Tree();
-    	Node root = obj.depth(arr);
+    	Node root = obj.BuildTree(arr);
         System.out.println(root.data);
-
+        obj.preorder(root);
     } 
 }

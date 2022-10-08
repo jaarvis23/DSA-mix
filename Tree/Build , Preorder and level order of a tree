@@ -34,6 +34,37 @@ class Tree
         preorder(root.left);
         preorder(root.right);
     }
+     void LevelOrder(Node root)
+    {
+        if(root==null)
+            return;
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while(!q.isEmpty())
+        {
+            Node t = q.remove();
+            if(t==null)
+            {
+                System.out.println();
+                if(q.isEmpty())
+                    return;
+                else
+                {
+                    q.add(null);
+                }
+            }
+            else
+            {
+                System.out.print(t.data+" ");
+                if(t.left!=null)
+                    q.add(t.left);
+                if(t.right!=null)
+                    q.add(t.right);
+            }
+        }
+
+    }
 }
 public class Test { 
 
@@ -46,5 +77,6 @@ public class Test {
     	Node root = obj.BuildTree(arr);
         System.out.println(root.data);
         obj.preorder(root);
+	obj.LevelOrder(root);
     } 
 }

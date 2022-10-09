@@ -1,0 +1,10 @@
+int CountNodes(Node root)
+    {
+        if(root==null)
+            return 0;
+        int l = CountNodes(root.left);
+        int r = CountNodes(root.right);
+        
+        return l+r+1;
+        
+    }
